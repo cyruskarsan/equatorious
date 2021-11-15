@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from 'next/head';
 import * as styles from './index.style';
 
 export default function Home() {
@@ -14,9 +14,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          NFT Marketplace
-        </h1>
+        <h1 className={styles.title}>NFT Marketplace</h1>
       </main>
     </div>
   );

@@ -1,5 +1,13 @@
 {
   "extends": ["next/core-web-vitals", "prettier"],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [["@src", "./"]],
+        "extension": [".js"]
+      }
+    }
+  },
   "rules": {
     "complexity": [
       "error",
@@ -22,13 +30,16 @@
         "assert": "either"
       }
     ],
-    "no-unused-vars": "error",
     "no-implicit-coercion": "error",
     "no-implicit-globals": "error",
-    "no-undefined": "error",
     "no-plusplus": "warn",
-    "react/prop-types": "error",
+    "no-undefined": "error",
+    "no-unused-vars": "error",
+    "react/button-has-type": "error",
     "react/destructuring-assignment": "error",
+    "react/jsx-sort-default-props": "error",
+    "react/jsx-sort-props": "error",
+    "react/prop-types": "error",
     "react/require-default-props": "error"
   }
 }

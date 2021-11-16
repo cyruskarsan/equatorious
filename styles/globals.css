@@ -1,9 +1,37 @@
+:root {
+  --bg-gradient: #fc077d10;
+}
+
+[data-theme='light'] {
+  --main-bg: white;
+  --header-bg: rgb(247, 248, 250);
+  --navlink-bg-active: rgb(237, 238, 242);
+  --navlink-text-active: black;
+  --navlink-text-inactive: rgb(86, 90, 105);
+  --navlink-text-hover: black;
+  --text-primary: black;
+  --text-secondary: rgb(213, 0, 102);
+  --hover-outline: rgb(206, 208, 217);
+}
+
+[data-theme='dark'] {
+  --main-bg: black;
+  --header-bg: rgb(33, 36, 41);
+  --navlink-bg-active: rgb(44, 47, 54);
+  --navlink-text-active: white;
+  --navlink-text-inactive: rgb(195, 197, 203);
+  --navlink-text-hover: rgb(230, 230, 230);
+  --text-primary: white;
+  --text-secondary: rgb(57, 130, 231);
+  --hover-outline: rgb(64, 68, 79);
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Asap, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {

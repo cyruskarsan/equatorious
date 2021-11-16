@@ -15,6 +15,6 @@ export const main = css`
 `;
 
 export const title = css`
-  color: #0070f3;
+  color: var(--text-secondary);
   text-decoration: none;
 `;

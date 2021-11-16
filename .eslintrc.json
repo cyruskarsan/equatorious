@@ -39,7 +39,7 @@
     "react/destructuring-assignment": "error",
     "react/jsx-sort-default-props": "error",
     "react/jsx-sort-props": "error",
-    "react/prop-types": "error",
+    "react/prop-types": ["error", { "ignore": ["Component", "pageProps"] }],
     "react/require-default-props": "error"
   }
 }

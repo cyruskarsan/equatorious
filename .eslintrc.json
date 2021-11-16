@@ -1,3 +1,45 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "prettier"],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [["@src", "./"]],
+        "extension": [".js"]
+      }
+    }
+  },
+  "rules": {
+    "complexity": [
+      "error",
+      {
+        "max": 10
+      }
+    ],
+    "import/no-unresolved": "warn",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "jsx-a11y/click-events-have-key-events": "error",
+    "jsx-a11y/interactive-supports-focus": "error",
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "assert": "either"
+      }
+    ],
+    "no-implicit-coercion": "error",
+    "no-implicit-globals": "error",
+    "no-plusplus": "warn",
+    "no-undefined": "error",
+    "no-unused-vars": "error",
+    "react/button-has-type": "error",
+    "react/destructuring-assignment": "error",
+    "react/jsx-sort-default-props": "error",
+    "react/jsx-sort-props": "error",
+    "react/prop-types": ["error", { "ignore": ["Component", "pageProps"] }],
+    "react/require-default-props": "error"
+  }
 }

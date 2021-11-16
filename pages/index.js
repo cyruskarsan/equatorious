@@ -7,10 +7,10 @@ export default function Home() {
       <Head>
         <title>Equatorious</title>
         <meta
-          name="description"
           content="NFT Marketplace - Ethereum Web3 Jam Hackathon"
+          name="description"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link href="/favicon.ico" rel="icon" />
       </Head>
 
       <main className={styles.main}>

@@ -6,12 +6,10 @@ export const container = css`
 
 export const main = css`
   min-height: 100vh;
-  padding: 4rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 export const title = css`

@@ -1,6 +1,7 @@
 import Head from 'next/head';
-import * as styles from './index.style';
+import { AppBar } from '@src/components';
 import { useThemeSwitcher } from '@src/hooks';
+import * as styles from './index.style';
 
 export default function Home() {
   const [theme] = useThemeSwitcher();
@@ -12,6 +13,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <AppBar />
         <h1 className={styles.title}>NFT Marketplace</h1>
       </main>
     </div>

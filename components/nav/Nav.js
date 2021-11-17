@@ -1,6 +1,6 @@
 import { arrayOf, shape, string } from 'prop-types';
 import { stringToId } from '@src/helpers';
-import { NavLink } from '..';
+import NavLink from './navLink/NavLink';
 import * as styles from './Nav.styles';
 
 const Nav = ({ label, links }) => {

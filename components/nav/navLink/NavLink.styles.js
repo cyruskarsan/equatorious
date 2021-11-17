@@ -1,6 +1,7 @@
 import { css, cx } from '@emotion/css';
 
 export const link = css`
+  display: flex;
   text-decoration: none;
   font-size: large;
   font-size: 1rem;
@@ -25,11 +26,14 @@ export const inactive = css`
 `;
 
 export const sup = css`
-  font-family: Asap, sans-serif;
+  padding-left: 2px;
+  font-weight: 600;
 `;
 
-export const getClasses = ({ isActive }) =>
-  cx(link, {
+export const getStyles = ({ isActive }) => ({
+  navLinkRoot: cx(link, {
     [active]: isActive,
     [inactive]: !isActive,
-  });
+  }),
+  sup,
+});

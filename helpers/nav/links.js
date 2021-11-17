@@ -4,15 +4,15 @@ export const mainNavLinks = [
     text: 'Swap',
   },
   {
-    href: '/pool',
+    href: '#',
     text: 'Pool',
   },
   {
-    href: '/vote',
+    href: '#',
     text: 'Vote',
   },
   {
-    href: '/charts',
+    href: '#',
     target: '_blank',
     text: 'Charts',
   },

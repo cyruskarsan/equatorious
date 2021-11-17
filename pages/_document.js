@@ -8,7 +8,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
           <meta
             content="NFT Marketplace - Ethereum Web3 Jam Hackathon"
@@ -28,6 +28,7 @@ class MyDocument extends Document {
         </Head>
         <body>
           <Main />
+          <div id="modal" />
           <NextScript />
         </body>
       </Html>

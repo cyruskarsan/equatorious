@@ -1,7 +1,7 @@
 import { MainApp } from '@src/components'
 import { MintPage } from '@src/components'
 
-export default function Mint ()
+const Mint = () =>
 {
   return (
     <MainApp>
@@ -9,3 +9,5 @@ export default function Mint ()
     </MainApp>
   )
 }
+
+export default Mint

@@ -1,4 +1,5 @@
 import { MainApp } from '@src/components'
+import * as styles from '@src/components/mainApp/index.style'
 
 export default function Home ()
 {

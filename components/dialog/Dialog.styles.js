@@ -25,5 +25,3 @@ export const modalSection = css`
     width: 85vw;
   }
 `;
-
-// 960px 65vw, 720px 85vw

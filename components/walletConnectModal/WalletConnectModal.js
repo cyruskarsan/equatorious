@@ -1,6 +1,6 @@
 import { bool, node } from 'prop-types';
 import { useState } from 'react';
-import { Button, Modal } from '@src/components';
+import { Button, Dialog } from '@src/components';
 import * as styles from './WalletConnectModal.styles';
 
 const WalletConnectModal = () => {
@@ -17,7 +17,7 @@ const WalletConnectModal = () => {
   return (
     <>
       <Button onClick={openModal} text="Connect Wallet" />
-      <Modal label="Connect a Wallet" onClose={closeModal} open={open}>
+      <Dialog label="Connect a Wallet" onClose={closeModal} open={open}>
         <div className={styles.connectHeading}>
           <h2>Connect a Wallet</h2>
           <Button onClick={closeModal} text="Close Modal" />
@@ -29,7 +29,7 @@ const WalletConnectModal = () => {
           <Button onClick={connectFormatic} text="Fortmatic" />
           <Button onClick={connectPortis} text="Portis" />
         </div>
-      </Modal>
+      </Dialog>
     </>
   );
 };

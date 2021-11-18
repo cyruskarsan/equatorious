@@ -8,6 +8,7 @@ import { formatEther } from "@ethersproject/units";
 const WalletConnectModal = () => {
   const [open, setOpen] = useState(false);
 
+  // TODO: error handling if auth fails
   const { activateBrowserWallet, account, chainId, error } = useEthers()
   const etherBalance = useEtherBalance(account)
 
@@ -41,6 +42,8 @@ const WalletConnectModal = () => {
       <Modal label="Connect a Wallet" onClose={closeModal} open={open}>
         <div className={styles.connectHeading}>
           <h2>Connect a Wallet</h2>
+
+          {/* TODO: make this button father away */}
           <Button onClick={closeModal} text="Close" />
 
         </div>

@@ -23,7 +23,7 @@ export default function MainApp ( { children } )
 }
 
 MainApp.defaultProps = {
-  children: []
+  children: () => { }
 }
 
 MainApp.propTypes = {

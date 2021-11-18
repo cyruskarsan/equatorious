@@ -2,13 +2,20 @@ import { bool, node } from 'prop-types';
 import { useState } from 'react';
 import { Button, Modal } from '@src/components';
 import * as styles from './WalletConnectModal.styles';
+import { useEthers, useEtherBalance } from '@usedapp/core';
+import { formatEther } from "@ethersproject/units";
 
 const WalletConnectModal = () => {
   const [open, setOpen] = useState(false);
 
+  const {activateBrowserWallet, account} = useEthers()
+  const etherBalance = useEtherBalance(account)
+
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
-  const connectMetaMask = () => {}; // TODO
+  const connectMetaMask = () => {
+    activateBrowserWallet()
+  };
   const connectWalletConnect = () => {}; // TODO
   const connectCoinbaseWallet = () => {}; // TODO
   const connectFormatic = () => {}; // TODO
@@ -16,7 +23,8 @@ const WalletConnectModal = () => {
 
   return (
     <>
-      <Button onClick={openModal} text="Connect Wallet" />
+      {!account  && <Button onClick={openModal} text="Connect Wallet" /> }
+      {account && <h3> Account: {account} </h3>}
       <Modal label="Connect a Wallet" onClose={closeModal} open={open}>
         <div className={styles.connectHeading}>
           <h2>Connect a Wallet</h2>
@@ -32,7 +40,7 @@ const WalletConnectModal = () => {
       </Modal>
     </>
   );
-};
+}
 
 WalletConnectModal.defaultProps = {
   children: null,

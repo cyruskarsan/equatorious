@@ -3,21 +3,22 @@ import { AppBar } from '@src/components';
 import { PropTypes } from 'prop-types';
 import { useThemeSwitcher } from '@src/hooks';
 import * as styles from './index.style';
+import { DAppProvider } from '@usedapp/core'
 
-export default function MainApp ( { children } )
-{
-  const [ theme ] = useThemeSwitcher();
+export default function MainApp({ children }) {
+  const [theme] = useThemeSwitcher();
 
   return (
-    <div className={ styles.container } data-theme={ theme }>
-      <Head>
-        <title>Equatorious</title>
-      </Head>
-    
-      <main className={ styles.main }>
-        <AppBar />
-        { children }
-      </main>
+    <div className={styles.container} data-theme={theme}>
+      <DAppProvider config={{}}>
+        <Head>
+          <title>Equatorious</title>
+        </Head>
+        <main className={styles.main}>
+          <AppBar />
+          {children}
+        </main>
+      </DAppProvider>
     </div>
   );
 }

@@ -24,7 +24,7 @@ const WalletConnectModal = () => {
   const connectMetaMask = () => {
     activateBrowserWallet()
   };
-  
+
   const connectWalletConnect = () => {}; // TODO
   const connectCoinbaseWallet = () => {}; // TODO
   const connectFormatic = () => {}; // TODO
@@ -33,7 +33,11 @@ const WalletConnectModal = () => {
   return (
     <>
       {!account  && <Button onClick={openModal} text="Connect Wallet" /> }
-      {account && <h3> Account: {account} on {chain}</h3>}
+      {account && <h3> Account:
+            { account.slice(0, 6)}...{account.slice(
+              account.length - 4,
+              account.length
+            )} on {chain}</h3>}
       <Modal label="Connect a Wallet" onClose={closeModal} open={open}>
         <div className={styles.connectHeading}>
           <h2>Connect a Wallet</h2>

@@ -1,21 +1,30 @@
 import { bool, node } from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Modal } from '@src/components';
 import * as styles from './WalletConnectModal.styles';
-import { useEthers, useEtherBalance } from '@usedapp/core';
+import { useEthers, useEtherBalance, getChainName } from '@usedapp/core';
 import { formatEther } from "@ethersproject/units";
 
 const WalletConnectModal = () => {
   const [open, setOpen] = useState(false);
 
-  const {activateBrowserWallet, account} = useEthers()
+  const {activateBrowserWallet, account, chainId, error} = useEthers()
   const etherBalance = useEtherBalance(account)
+
+  const [chain, setChain] = useState('None')
 
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
+
+  useEffect(() => {
+    setChain(getChainName(chainId))
+  }, [chainId])
+
+
   const connectMetaMask = () => {
     activateBrowserWallet()
   };
+  
   const connectWalletConnect = () => {}; // TODO
   const connectCoinbaseWallet = () => {}; // TODO
   const connectFormatic = () => {}; // TODO
@@ -24,7 +33,7 @@ const WalletConnectModal = () => {
   return (
     <>
       {!account  && <Button onClick={openModal} text="Connect Wallet" /> }
-      {account && <h3> Account: {account} </h3>}
+      {account && <h3> Account: {account} on {chain}</h3>}
       <Modal label="Connect a Wallet" onClose={closeModal} open={open}>
         <div className={styles.connectHeading}>
           <h2>Connect a Wallet</h2>

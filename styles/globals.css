@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --bg-gradient: #fc077d10;
   --modal-bg: rgba(0, 0, 0, 0.7);

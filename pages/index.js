@@ -1,23 +1,16 @@
-import Head from 'next/head';
-import { AppBar } from '@src/components';
-import { useThemeSwitcher } from '@src/hooks';
-import * as styles from './index.style';
-import { DAppProvider } from '@usedapp/core';
+import { MainApp } from '@src/components'
+import * as styles from '@src/components/mainApp/index.style'
+import { DAppProvider } from '@usedapp/core'
 
-export default function Home() {
-  const [theme] = useThemeSwitcher();
-
+export default function Home ()
+{
   return (
-    <div className={styles.container} data-theme={theme}>
-      <Head>
-        <title>Equatorious</title>
-      </Head>
-      <DAppProvider config={{}}>
-      <main className={styles.main}>
-        <AppBar />
-        <h1 className={styles.title}>NFT Marketplace</h1>
-      </main>
-      </DAppProvider>
-    </div>
-  );
+    <DAppProvider config={{}}>
+          <MainApp>
+      <h1 className={ styles.title }>NFT Marketplace</h1>
+      <p>put a button to enter app here</p>
+    </MainApp>
+    </DAppProvider>
+
+  )
 }

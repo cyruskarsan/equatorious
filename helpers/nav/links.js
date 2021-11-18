@@ -1,19 +1,14 @@
 export const mainNavLinks = [
   {
     href: '/',
-    text: 'Swap',
+    text: 'Dashboard',
   },
   {
-    href: '#',
-    text: 'Pool',
+    href: '/mint',
+    text: 'Mint',
   },
   {
-    href: '#',
-    text: 'Vote',
+    href: '/transfer',
+    text: 'Transfer',
   },
-  {
-    href: '#',
-    target: '_blank',
-    text: 'Charts',
-  },
-];
+]

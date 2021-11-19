@@ -9,6 +9,7 @@ const MintPage = () =>
 {
   const mint = ( event ) =>
   {
+    console.log('event',event)
     // TODO: fix this to actually use the uploaded file, name, and wallet addr
     const { account} = useEthers()
     event.preventDefault();

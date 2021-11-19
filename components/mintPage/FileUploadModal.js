@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import './FileUploadModal.module.css';
 
 /**
@@ -8,6 +9,20 @@ import './FileUploadModal.module.css';
  */
 export default function FileUploadModal ( { onSubmit } )
 {
+  const [selectedFile, setSelectedFile] = useState()
+  const [isFilePicked, setIsFilePicked] = useState(false)
+
+  const changeHandler = (event) => {
+    setSelectedFile(event.target.files[0])
+  }
+
+  useEffect(() => {
+    console.log(selectedFile)
+  },[selectedFile])
+
+  const handleSubmission = () => {
+
+  }
   return (
     <div className="sm:max-w-lg w-full p-10 bg-white rounded-xl z-10">
       <div className="text-center">
@@ -36,9 +51,9 @@ export default function FileUploadModal ( { onSubmit } )
                 <div className="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
                   <Image alt="freepik image" className="has-mask h-36 object-center" height="338" src="/images/file-upload.jpg" width="338" />
                 </div>
-                <p className="pointer-none text-gray-500 "><span className="text-sm">Drag and drop</span> files here <br /> or <a className="text-blue-600 hover:underline" href="" id="">select a file</a> from your computer</p>
+                <p className="pointer-none text-gray-500 "><span className="text-sm">Drag and drop</span> files here <br /> or click here to select a file from your computer</p>
               </div>
-              <input className="hidden" id="file" type="file" />
+              <input className="hidden" id="file" type="file" onChange={changeHandler}/>
             </label>
           </div>
         </div>

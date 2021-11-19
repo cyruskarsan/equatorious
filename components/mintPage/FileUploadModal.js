@@ -14,6 +14,7 @@ export default function FileUploadModal ( { onSubmit } )
 
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0])
+    setIsFilePicked(true)
   }
 
   useEffect(() => {
@@ -40,7 +41,15 @@ export default function FileUploadModal ( { onSubmit } )
           <label className="text-sm font-bold text-gray-500 tracking-wide" htmlFor="description">Description</label>
           <input className="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" id="descriptionInput" placeholder="Description of my NFT" type="" />
         </div>
-        <div className="grid grid-cols-1 space-y-2">
+        {isFilePicked && <div className="grid grid-cols-1 space-y-2">
+          <div className="flex items-center justify-center w-full">
+            <p> selectedFile: {selectedFile.name}</p>
+          </div>
+          </div>
+          } 
+        
+          {!isFilePicked &&        
+            <div className="grid grid-cols-1 space-y-2">
           <label className="text-sm font-bold text-gray-500 tracking-wide" htmlFor="file">Attach Document</label>
           <div className="flex items-center justify-center w-full">
             <label className="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
@@ -56,10 +65,11 @@ export default function FileUploadModal ( { onSubmit } )
               <input className="hidden" id="file" type="file" onChange={changeHandler}/>
             </label>
           </div>
+          <p className="text-sm text-gray-300">
+                <span>File type: PNG, JPEG images only</span>
+              </p>
         </div>
-        <p className="text-sm text-gray-300">
-          <span>File type: doc,pdf,types of images</span>
-        </p>
+        }
         <div>
           <button className="my-5 w-full flex justify-center bg-blue-500 text-gray-100 p-4  rounded-full tracking-wide
                                     font-semibold  focus:outline-none focus:shadow-outline hover:bg-blue-600 shadow-lg cursor-pointer transition ease-in duration-300" type="submit">

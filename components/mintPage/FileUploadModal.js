@@ -21,9 +21,7 @@ export default function FileUploadModal ( { onSubmit } )
     console.log(selectedFile)
   },[selectedFile])
 
-  const handleSubmission = () => {
 
-  }
   return (
     <div className="sm:max-w-lg w-full p-10 bg-white rounded-xl z-10">
       <div className="text-center">

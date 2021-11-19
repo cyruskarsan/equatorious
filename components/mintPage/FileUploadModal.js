@@ -12,14 +12,18 @@ export default function FileUploadModal ( { onSubmit } )
     <div className="sm:max-w-lg w-full p-10 bg-white rounded-xl z-10">
       <div className="text-center">
         <h2 className="mt-5 text-3xl font-bold text-gray-900">
-          File Upload!
+          Create your NFT!
         </h2>
-        <p className="mt-2 text-sm text-gray-400">Lorem ipsum is placeholder text.</p>
+        <p className="mt-2 text-sm text-gray-400">Please choose the original document of ownership for the NFT!</p>
       </div>
       <form action="submit" className="mt-8 space-y-3" onSubmit={ onSubmit }>
         <div className="grid grid-cols-1 space-y-2">
-          <label className="text-sm font-bold text-gray-500 tracking-wide" htmlFor="name">Title</label>
-          <input className="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" id="name" placeholder="mail@gmail.com" type="" />
+          <label className="text-sm font-bold text-gray-500 tracking-wide" htmlFor="name">Name</label>
+          <input className="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" id="nameInput" placeholder="My NFT name" type="" />
+        </div>
+        <div className="grid grid-cols-1 space-y-2">
+          <label className="text-sm font-bold text-gray-500 tracking-wide" htmlFor="description">Description</label>
+          <input className="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" id="descriptionInput" placeholder="Description of my NFT" type="" />
         </div>
         <div className="grid grid-cols-1 space-y-2">
           <label className="text-sm font-bold text-gray-500 tracking-wide" htmlFor="file">Attach Document</label>

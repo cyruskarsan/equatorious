@@ -7,18 +7,63 @@ import './FileUploadModal.module.css';
  * @param {onSubmit} function to call when form is submitted
  * @returns FileUploadModal html/jsx
  */
-export default function FileUploadModal({ onSubmit }) {
+export default function FileUploadModal() {
   const [selectedFile, setSelectedFile] = useState()
   const [isFilePicked, setIsFilePicked] = useState(false)
+  const [nftName, setNftName] = useState("No name")
+  const [nftDesc, setNftDesc] = useState("No desc")
 
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0])
     setIsFilePicked(true)
   }
 
+  const formHandler = () => {
+    event.preventDefault()
+    const fileData = new FormData();
+    fileData.append( 'file', selectedFile);
+  
+  
+    const options = {
+      method: 'POST',
+      body: fileData,
+      headers: {
+        "Authorization": "91e45e10-9125-46f3-b7f8-dfd8b547837f"
+      }
+    }
+  
+    fetch("https://api.nftport.xyz/v0/mints/easy/files?" + new URLSearchParams({
+     chain: "polygon",
+     name: nftName,
+     description: nftDesc,
+     mint_to_address: "0x94299e2f2E44474701145017185B8B0Df378641a"
+    } ), options)
+      .then( response =>
+      {
+        return response.json();
+      } )
+      .then((json) => {
+        console.log('json response', json)
+      })
+      .catch( err =>
+      {
+        console.error( err );
+      })
+  }
+
+  const recordName = (event) => {
+    setNftName(event.target.value)
+  }
+
+  const recordDesc = (event) => {
+    setNftDesc(event.target.value)
+  }
+
   useEffect(() => {
     console.log(selectedFile)
-  }, [selectedFile])
+    console.log(nftName)
+    console.log(nftDesc)
+    }, [selectedFile, nftName, nftDesc])
 
 
   return (
@@ -29,14 +74,14 @@ export default function FileUploadModal({ onSubmit }) {
         </h2>
         <p className="mt-2 text-sm text-gray-400">Please choose the original document of ownership for the NFT!</p>
       </div>
-      <form action="submit" className="mt-8 space-y-3" onSubmit={onSubmit}>
+      <form action="submit" className="mt-8 space-y-3" onSubmit={formHandler}>
         <div className="grid grid-cols-1 space-y-2">
           <label className="text-sm font-bold text-gray-500 tracking-wide" htmlFor="name">Name</label>
-          <input className="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" id="nameInput" placeholder="My NFT name" type="" />
+          <input className="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" id="nameInput" placeholder="My NFT name" type="" onChange={recordName}/>
         </div>
         <div className="grid grid-cols-1 space-y-2">
           <label className="text-sm font-bold text-gray-500 tracking-wide" htmlFor="description">Description</label>
-          <input className="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" id="descriptionInput" placeholder="Description of my NFT" type="" />
+          <input className="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" id="descriptionInput" placeholder="Description of my NFT" type="" onChange={recordDesc}/>
         </div>
         {isFilePicked && <div className="grid grid-cols-1 space-y-2">
           <div className="flex items-center justify-center w-full">

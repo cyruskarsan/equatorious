@@ -21,7 +21,7 @@ const MintPage = () =>
   };
 
   return (
-    <FileUploadModal onSubmit={ mint } />
+    <FileUploadModal />
   );
 };
 

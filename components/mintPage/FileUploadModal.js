@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { useEthers } from '@usedapp/core';
 import './FileUploadModal.module.css';
 
 /**
@@ -14,10 +13,6 @@ export default function FileUploadModal({onSubmit}) {
   const [nftName, setNftName] = useState("No name")
   const [nftDesc, setNftDesc] = useState("No desc")
 
-  const [success, setSuccess] = useState()
-
-  const { account } = useEthers();
-  console.log(account);
 
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0])
@@ -29,35 +24,7 @@ export default function FileUploadModal({onSubmit}) {
     const fileData = new FormData();
     fileData.append( 'file', selectedFile);
 
-    // mintNft(fileData, nftName, nftDesc);
-  
-    const options = {
-      method: 'POST',
-      body: fileData,
-      headers: {
-        "Authorization": "91e45e10-9125-46f3-b7f8-dfd8b547837f"
-      }
-    }
-  
-    fetch("https://api.nftport.xyz/v0/mints/easy/files?" + new URLSearchParams({
-     chain: "polygon",
-     name: nftName,
-     description: nftDesc,
-    //  mint_to_address: "0x94299e2f2E44474701145017185B8B0Df378641a"
-     mint_to_address: account,
-    } ), options)
-      .then( response =>
-      {
-        return response.json();
-      } )
-      .then((json) => {
-        setSuccess(json)
-        console.log('json response', json)
-      })
-      .catch( err =>
-      {
-        console.error( err );
-      })
+    onSubmit(fileData, nftName, nftDesc);
   }
 
   const recordName = (event) => {

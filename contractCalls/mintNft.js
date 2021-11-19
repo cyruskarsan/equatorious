@@ -8,23 +8,21 @@ const mintNft = ( mintNftRequest ) =>
   const fileData = new FormData();
   fileData.append( 'file', mintNftRequest.file );
 
-  const body = {
-    "chain": "polygon",
-    "name": mintNftRequest.name,
-    "description": "test NFT description",
-    "file_url": mintNftRequest.file_url,
-    "mint_to_address": mintNftRequest.mint_to_address,
-  };
+
+  const options = {
+    method: 'POST',
+    body: form,
+    headers: {
+      "Authorization": "91e45e10-9125-46f3-b7f8-dfd8b547837f"
+    }
+  }
 
   fetch( "https://api.nftport.xyz/v0/mints/easy/urls", {
-    "method": "POST",
-    "headers": {
-      "Content-Type": "application/json",
-      "Authorization": process.env.NFTPORT_KEY
-    },
-
-    body: JSON.stringify( body )
-  } )
+   chain: "polygon",
+   name: "Test",
+   description: "Test",
+   mint_to_address: "0x94299e2f2E44474701145017185B8B0Df378641a"
+  } ), options
     .then( response =>
     {
       console.log( response );

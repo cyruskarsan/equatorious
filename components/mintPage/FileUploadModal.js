@@ -35,12 +35,6 @@ export default function FileUploadModal({onSubmit}) {
     setNftDesc(event.target.value)
   }
 
-  useEffect(() => {
-    console.log(selectedFile)
-    console.log(nftName)
-    console.log(nftDesc)
-    }, [selectedFile, nftName, nftDesc])
-
 
   return (
     <div className="sm:max-w-lg w-full p-10 bg-white rounded-xl z-10">

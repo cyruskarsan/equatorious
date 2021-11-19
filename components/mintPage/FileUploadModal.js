@@ -13,6 +13,8 @@ export default function FileUploadModal() {
   const [nftName, setNftName] = useState("No name")
   const [nftDesc, setNftDesc] = useState("No desc")
 
+  const [success, setSuccess] = useState()
+
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0])
     setIsFilePicked(true)
@@ -43,6 +45,7 @@ export default function FileUploadModal() {
         return response.json();
       } )
       .then((json) => {
+        setSuccess(json)
         console.log('json response', json)
       })
       .catch( err =>

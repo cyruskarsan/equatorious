@@ -1,7 +1,7 @@
 // import MintNftRequest from "./MintNftRequest"
 
 // const mintNft = ( mintNftRequest: MintNftRequest ) =>
-const mintNft = ( mintNftRequest ) =>
+const mintNft = ( file, name, description ) =>
 {
   console.log( "minting NFT. request: " + mintNftRequest );
 

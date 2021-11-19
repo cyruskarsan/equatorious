@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { useEthers } from '@usedapp/core';
 import './FileUploadModal.module.css';
 
 /**
@@ -7,13 +8,16 @@ import './FileUploadModal.module.css';
  * @param {onSubmit} function to call when form is submitted
  * @returns FileUploadModal html/jsx
  */
-export default function FileUploadModal() {
+export default function FileUploadModal({onSubmit}) {
   const [selectedFile, setSelectedFile] = useState()
   const [isFilePicked, setIsFilePicked] = useState(false)
   const [nftName, setNftName] = useState("No name")
   const [nftDesc, setNftDesc] = useState("No desc")
 
   const [success, setSuccess] = useState()
+
+  const { account } = useEthers();
+  console.log(account);
 
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0])
@@ -24,7 +28,8 @@ export default function FileUploadModal() {
     event.preventDefault()
     const fileData = new FormData();
     fileData.append( 'file', selectedFile);
-  
+
+    // mintNft(fileData, nftName, nftDesc);
   
     const options = {
       method: 'POST',
@@ -38,7 +43,8 @@ export default function FileUploadModal() {
      chain: "polygon",
      name: nftName,
      description: nftDesc,
-     mint_to_address: "0x94299e2f2E44474701145017185B8B0Df378641a"
+    //  mint_to_address: "0x94299e2f2E44474701145017185B8B0Df378641a"
+     mint_to_address: account,
     } ), options)
       .then( response =>
       {

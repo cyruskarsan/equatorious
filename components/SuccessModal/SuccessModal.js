@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Router from 'next/router'
 
-const Modal = ({isOpen, setIsOpen, polygonUrl}) => {
+const SuccessModal = ({isOpen, setIsOpen, polygonUrl}) => {
 
   const handleCloseModal = () => {
     setIsOpen(false)
@@ -35,4 +35,4 @@ const Modal = ({isOpen, setIsOpen, polygonUrl}) => {
     )
 };
 
-export default Modal;
+export default SuccessModal;

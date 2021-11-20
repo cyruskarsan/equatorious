@@ -5,7 +5,7 @@ import { isPolygonNetwork } from '@src/helpers';
 import mintNft from '@src/contractCalls/mintNft';
 // import MintNftRequest from "@src/contractCalls/MintNftRequest"
 import FileUploadModal from "./FileUploadModal"
-import Modal from "../SuccessModal/Modal"
+import SuccessModal from "../SuccessModal/SuccessModal"
 
 const MintPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -47,7 +47,7 @@ const MintPage = () => {
 
   if (successStatus) {
     return (
-    <Modal 
+    <SuccessModal 
       isOpen = {successStatus}
       setIsOpen = {setSuccessStatus} 
       polygonUrl={polygonUrl}/>

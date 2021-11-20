@@ -10,7 +10,13 @@ import Modal from "../SuccessModal/Modal"
 const MintPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState();
+  const [polygonUrl, setPolygonUrl] = useState();
   const { account, chainId } = useEthers();
+
+  const handleCallback = (childData) => {
+    setSuccess(false)
+    isLoading(false)
+  }
 
   const mint = (file, name, desc) => {
     if (isPolygonNetwork(chainId)) {
@@ -19,7 +25,12 @@ const MintPage = () => {
         .then((response) => {
           // todo: successMessage
           setIsLoading(false);
-          setSuccess(response.json());
+          return response.json()
+        })
+        .then((json) => {
+          console.log('json', json)
+          setSuccess(true)
+          setPolygonUrl(json.transaction_external_url)
         })
         .catch((err) => {
           console.error(err);
@@ -36,10 +47,10 @@ const MintPage = () => {
   }
 
   if (success) {
-    return <Modal/>
+    return <Modal parentCallback ={handleCallback} polygonUrl={polygonUrl}/>
   }
    return(
-    <FileUploadModal onSubmit={ mint } hidden={isLoading}/>
+    <FileUploadModal onSubmit={ mint }/>
    )
 }
 

@@ -10,7 +10,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
-    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
+    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/css": "^11.5.0",
@@ -27,7 +28,13 @@
     "eslint-config-next": "12.0.3",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-alias": "^1.1.2",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.0.3",
     "prettier": "2.4.1",
     "prop-types": "^15.7.2"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "npm run prettier --write --"
   }
 }

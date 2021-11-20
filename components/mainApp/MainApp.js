@@ -1,10 +1,9 @@
 import Head from 'next/head';
-import { AppBar } from '@src/components';
 import { PropTypes } from 'prop-types';
+import { DAppProvider } from '@usedapp/core';
+import { AppBar } from '@src/components';
 import { useThemeSwitcher } from '@src/hooks';
-import * as styles from './index.style';
-import { DAppProvider } from '@usedapp/core'
-import Modal from '../SuccessModal/Modal';
+import * as styles from './MainApp.style';
 
 export default function MainApp({ children }) {
   const [theme] = useThemeSwitcher();
@@ -25,9 +24,9 @@ export default function MainApp({ children }) {
 }
 
 MainApp.defaultProps = {
-  children: () => { }
+  children: () => {},
 };
 
 MainApp.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };

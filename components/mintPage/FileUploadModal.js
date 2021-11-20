@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './FileUploadModal.module.css';
 
 /**
@@ -7,33 +7,37 @@ import './FileUploadModal.module.css';
  * @param {onSubmit} function to call when form is submitted
  * @returns FileUploadModal html/jsx
  */
-export default function FileUploadModal({onSubmit}) {
-  const [selectedFile, setSelectedFile] = useState()
-  const [isFilePicked, setIsFilePicked] = useState(false)
-  const [nftName, setNftName] = useState("No name")
-  const [nftDesc, setNftDesc] = useState("No desc")
+export default function FileUploadModal ( { onSubmit } )
+{
+  const [ selectedFile, setSelectedFile ] = useState();
+  const [ isFilePicked, setIsFilePicked ] = useState( false );
+  const [ nftName, setNftName ] = useState( "No name" );
+  const [ nftDesc, setNftDesc ] = useState( "No desc" );
 
+  const changeHandler = ( event ) =>
+  {
+    setSelectedFile( event.target.files[ 0 ] );
+    setIsFilePicked( true );
+  };
 
-  const changeHandler = (event) => {
-    setSelectedFile(event.target.files[0])
-    setIsFilePicked(true)
-  }
-
-  const formHandler = () => {
-    event.preventDefault()
+  const formHandler = ( event ) =>
+  {
+    event.preventDefault();
     const fileData = new FormData();
-    fileData.append( 'file', selectedFile);
+    fileData.append( 'file', selectedFile );
 
-    onSubmit(fileData, nftName, nftDesc);
-  }
+    onSubmit( fileData, nftName, nftDesc );
+  };
 
-  const recordName = (event) => {
-    setNftName(event.target.value)
-  }
+  const recordName = ( event ) =>
+  {
+    setNftName( event.target.value );
+  };
 
-  const recordDesc = (event) => {
-    setNftDesc(event.target.value)
-  }
+  const recordDesc = ( event ) =>
+  {
+    setNftDesc( event.target.value );
+  };
 
 
   return (
@@ -44,23 +48,23 @@ export default function FileUploadModal({onSubmit}) {
         </h2>
         <p className="mt-2 text-sm text-gray-400">Please choose the original document of ownership for the NFT!</p>
       </div>
-      <form action="submit" className="mt-8 space-y-3" onSubmit={formHandler}>
+      <form action="submit" className="mt-8 space-y-3" onSubmit={ formHandler }>
         <div className="grid grid-cols-1 space-y-2">
           <label className="text-sm font-bold text-gray-500 tracking-wide" htmlFor="name">Name</label>
-          <input className="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" id="nameInput" placeholder="My NFT name" type="" onChange={recordName}/>
+          <input className="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" id="nameInput" onChange={ recordName } placeholder="My NFT name" type="" />
         </div>
         <div className="grid grid-cols-1 space-y-2">
           <label className="text-sm font-bold text-gray-500 tracking-wide" htmlFor="description">Description</label>
-          <input className="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" id="descriptionInput" placeholder="Description of my NFT" type="" onChange={recordDesc}/>
+          <input className="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" id="descriptionInput" onChange={ recordDesc } placeholder="Description of my NFT" type="" />
         </div>
-        {isFilePicked && <div className="grid grid-cols-1 space-y-2">
+        { isFilePicked && <div className="grid grid-cols-1 space-y-2">
           <div className="flex items-center justify-center w-full">
-            <p> selectedFile: {selectedFile.name}</p>
+            <p> selectedFile: { selectedFile.name }</p>
           </div>
         </div>
         }
 
-        {!isFilePicked &&
+        { !isFilePicked &&
           <div className="grid grid-cols-1 space-y-2">
             <label className="text-sm font-bold text-gray-500 tracking-wide" htmlFor="file">Attach Document</label>
             <div className="flex items-center justify-center w-full">
@@ -71,7 +75,7 @@ export default function FileUploadModal({onSubmit}) {
                   </div>
                   <p className="pointer-none text-gray-500 "><span className="text-sm">Drag and drop</span> files here <br /> or click here to select a file from your computer</p>
                 </div>
-                <input className="hidden" id="file" type="file" onChange={changeHandler} />
+                <input className="hidden" id="file" onChange={ changeHandler } type="file" />
               </label>
             </div>
             <p className="text-sm text-gray-300">
@@ -91,7 +95,7 @@ export default function FileUploadModal({onSubmit}) {
 }
 
 FileUploadModal.defaultProps = {
-  onSubmit: () => { console.warn("onSubmit called but not defined for FileUploadModal"); }
+  onSubmit: () => { console.warn( "onSubmit called but not defined for FileUploadModal" ); }
 };
 
 FileUploadModal.propTypes = {

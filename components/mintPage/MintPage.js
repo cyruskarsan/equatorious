@@ -5,7 +5,7 @@ import { isPolygonNetwork } from '@src/helpers'
 import mintNft from "@src/contractCalls/mintNft"
 // import MintNftRequest from "@src/contractCalls/MintNftRequest"
 import FileUploadModal from "./FileUploadModal"
-import Modal from "../modal"
+import Modal from "../SuccessModal/Modal"
 
 const MintPage = () =>
 {
@@ -38,13 +38,16 @@ const MintPage = () =>
     }
   }
 
-  return (
-    <>
-    {isLoading && <h3>Uploading your asset...</h3>} 
-    {!isLoading && <FileUploadModal onSubmit={ mint } />}
-    <Modal status={success}/>
-    </>
-  )
+  if (isLoading) {
+    return <h3>Uploading your asset...</h3>
+  }
+
+  if (success) {
+    return <Modal/>
+  }
+   return(
+    <FileUploadModal onSubmit={ mint } hidden={isLoading}/>
+   )
 }
 
 export default MintPage

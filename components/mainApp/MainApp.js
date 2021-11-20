@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 import { useThemeSwitcher } from '@src/hooks';
 import * as styles from './index.style';
 import { DAppProvider } from '@usedapp/core'
-import Modal from '../modal';
+import Modal from '../SuccessModal/Modal';
 
 export default function MainApp({ children }) {
   const [theme] = useThemeSwitcher();

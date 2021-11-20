@@ -1,10 +1,15 @@
+import { css } from '@emotion/css';
 import { MainApp, Dashboard } from '@src/components';
-import * as styles from '@src/components/mainApp/index.style';
+
+export const titleClass = css`
+  color: var(--text-secondary);
+  text-decoration: none;
+`;
 
 export default function Home() {
   return (
     <MainApp>
-      <h1 className={styles.title}>Your Offchain Assets Dashboard</h1>
+      <h1 className={titleClass}>Your Offchain Assets Dashboard</h1>
       <Dashboard />
     </MainApp>
   );

@@ -1,5 +1,5 @@
-import { NftCardGrid } from '..';
 import { useEthers } from '@usedapp/core';
+import { NftCardGrid } from '@src/components';
 import { isPolygonNetwork } from '@src/helpers';
 
 const Dashboard = () => {

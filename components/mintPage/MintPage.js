@@ -4,8 +4,8 @@ import { useEthers } from '@usedapp/core';
 import { isPolygonNetwork } from '@src/helpers';
 import mintNft from '@src/contractCalls/mintNft';
 // import MintNftRequest from "@src/contractCalls/MintNftRequest"
-import FileUploadModal from "./FileUploadModal"
-import SuccessModal from "../SuccessModal/SuccessModal"
+import FileUploadModal from './FileUploadModal';
+import SuccessModal from '../SuccessModal/SuccessModal';
 import Loading from './Loading';
 
 const MintPage = () => {
@@ -14,10 +14,11 @@ const MintPage = () => {
   const [polygonUrl, setPolygonUrl] = useState();
   const { account, chainId } = useEthers();
 
-  const handleCallback = (childData) => {
-    setSuccess(false)
-    isLoading(false)
-  }
+  // const handleCallback = ( childData ) =>
+  // {
+  //   setSuccess( false );
+  //   isLoading( false );
+  // };
 
   const mint = (file, name, desc) => {
     if (isPolygonNetwork(chainId)) {
@@ -26,14 +27,14 @@ const MintPage = () => {
         .then((response) => {
           // todo: successMessage
           setIsLoading(false);
-          return response.json()
+          return response.json();
         })
         .then((json) => {
-          setSuccessStatus(true)
-          setPolygonUrl(json.transaction_external_url)
+          setSuccessStatus(true);
+          setPolygonUrl(json.transaction_external_url);
         })
         .catch((err) => {
-          alert('Something went wrong!', err)
+          alert('Something went wrong!', err);
           console.error(err);
         });
     } else {
@@ -44,22 +45,19 @@ const MintPage = () => {
   };
 
   if (isLoading) {
-    return (
-      <Loading message="Minting your NFT ..."/>
-    )
+    return <Loading message="Minting your NFT ..." />;
   }
 
   if (successStatus) {
     return (
-    <SuccessModal 
-      isOpen = {successStatus}
-      setIsOpen = {setSuccessStatus} 
-      polygonUrl={polygonUrl}/>
-    )
+      <SuccessModal
+        isOpen={successStatus}
+        polygonUrl={polygonUrl}
+        setIsOpen={setSuccessStatus}
+      />
+    );
   }
-   return(
-    <FileUploadModal onSubmit={ mint }/>
-   )
-}
+  return <FileUploadModal onSubmit={mint} />;
+};
 
 export default MintPage;

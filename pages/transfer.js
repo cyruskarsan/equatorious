@@ -1,4 +1,4 @@
-import { MainApp } from "@src/components";
+import { MainApp } from "@src/components"
 
 const Transfer = () =>
 {
@@ -6,7 +6,7 @@ const Transfer = () =>
     <MainApp>
       <h1>Coming Soon!</h1>
     </MainApp>
-  );
-};
+  )
+}
 
-export default Transfer;
+export default Transfer

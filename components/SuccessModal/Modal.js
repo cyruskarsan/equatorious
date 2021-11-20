@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
-import Link from 'next/link'
+import Router from 'next/router'
 
 const Modal = ({isOpen, setIsOpen, polygonUrl}) => {
-  
-  const [closeModal, setCloseModal] = useState()
 
   const handleCloseModal = () => {
     setIsOpen(false)
+  }
+
+  const handleDashboardButton = () => {
+    Router.push('/')
   }
 
     return (
@@ -25,7 +27,7 @@ const Modal = ({isOpen, setIsOpen, polygonUrl}) => {
             </div>
             <div className="flex justify-between items-center w-100 border-t p-3">
               <button className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-white mr-1 close-modal" onClick={handleCloseModal}>Close</button>
-              <button className="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white">Dashboard</button>
+              <button className="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white" onClick={handleDashboardButton}>Dashboard</button>
             </div>
           </div>
         </div>

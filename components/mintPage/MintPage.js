@@ -23,7 +23,6 @@ const MintPage = () => {
       .catch((err) => {
         console.error(err);
       });
-
   };
 
   return isLoading ?

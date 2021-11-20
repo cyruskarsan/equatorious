@@ -1,13 +1,11 @@
 // import MintNftRequest from "./MintNftRequest"
 
-import { NFTPORT_API_KEY } from '@src/helpers';
-
 const mintNft = (fileData, nftName, nftDesc, account) => {
   const options = {
     method: 'POST',
     body: fileData,
     headers: {
-      Authorization: NFTPORT_API_KEY,
+      Authorization: process.env.NFTPORT_KEY,
     },
   };
 

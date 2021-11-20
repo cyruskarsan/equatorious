@@ -1,4 +1,3 @@
-import { NFTPORT_API_KEY } from '@src/helpers';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 /**
@@ -28,7 +27,7 @@ const useFetch = (url, { body, method = 'GET', run = true } = {}) => {
           method: tempMethod,
           headers: {
             'Content-Type': 'application/json',
-            Authorization: NFTPORT_API_KEY,
+            Authorization: process.env.NEXT_PUBLIC_NFTPORT_KEY,
           },
           ...bodyData,
         });

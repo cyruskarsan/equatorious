@@ -9,6 +9,7 @@ import FileUploadModal from './FileUploadModal';
 const MintPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [, setSuccess] = useState();
+  const [error, setError] = useState('');
   const { account, chainId } = useEthers();
 
   const mint = (file, name, desc) => {
@@ -21,7 +22,10 @@ const MintPage = () => {
           setSuccess(response.json());
         })
         .catch((err) => {
+          setIsLoading(false);
+          setError(err);
           console.error(err);
+          console.log(process.env.NEXT_PUBLIC_NFTPORT_KEY);
         });
     } else {
       // TODO: might wanna prevent the user from entering info
@@ -32,6 +36,8 @@ const MintPage = () => {
 
   return isLoading ? (
     <h3>Uploading your asset...</h3>
+  ) : error ? (
+    ((<h3>There was an error minting your nft.</h3>), (<p>{error}</p>))
   ) : (
     <FileUploadModal onSubmit={mint} />
   );

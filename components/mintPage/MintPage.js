@@ -9,7 +9,7 @@ import Modal from "../SuccessModal/Modal"
 
 const MintPage = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [success, setSuccess] = useState();
+  const [successStatus, setSuccessStatus] = useState();
   const [polygonUrl, setPolygonUrl] = useState();
   const { account, chainId } = useEthers();
 
@@ -28,8 +28,7 @@ const MintPage = () => {
           return response.json()
         })
         .then((json) => {
-          console.log('json', json)
-          setSuccess(true)
+          setSuccessStatus(true)
           setPolygonUrl(json.transaction_external_url)
         })
         .catch((err) => {
@@ -46,8 +45,13 @@ const MintPage = () => {
     return <h3>Uploading your asset...</h3>
   }
 
-  if (success) {
-    return <Modal parentCallback ={handleCallback} polygonUrl={polygonUrl}/>
+  if (successStatus) {
+    return (
+    <Modal 
+      isOpen = {successStatus}
+      setIsOpen = {setSuccessStatus} 
+      polygonUrl={polygonUrl}/>
+    )
   }
    return(
     <FileUploadModal onSubmit={ mint }/>

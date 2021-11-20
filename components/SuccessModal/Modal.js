@@ -1,22 +1,23 @@
 import React, {useState} from 'react';
+import Link from 'next/link'
 
-const Modal = ({parent, polygonUrl}) => {
+const Modal = ({isOpen, setIsOpen, polygonUrl}) => {
   
   const [closeModal, setCloseModal] = useState()
 
   const handleCloseModal = () => {
-    setCloseModal(true)
+    setIsOpen(false)
   }
 
     return (
       <div>
-        <div className="modal h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
+        <div className="modal h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50" hidden={!isOpen}>
           {/* modal */}
           <div className="bg-white rounded shadow-lg w-10/12 md:w-1/3">
             {/* modal header  */}
             <div className="border-b px-4 py-2 flex justify-between items-center">
               <h3 className="font-semibold text-lg">NFT minted successfully!</h3>
-              <button className="text-black close-modal">X</button>
+              <button className="text-black close-modal" onClick={handleCloseModal}>X</button>
             </div>
             {/* module body */}
             <div className="p-3">

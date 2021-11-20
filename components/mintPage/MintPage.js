@@ -6,6 +6,7 @@ import mintNft from '@src/contractCalls/mintNft';
 // import MintNftRequest from "@src/contractCalls/MintNftRequest"
 import FileUploadModal from "./FileUploadModal"
 import SuccessModal from "../SuccessModal/SuccessModal"
+import Loading from './Loading';
 
 const MintPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -43,7 +44,9 @@ const MintPage = () => {
   };
 
   if (isLoading) {
-    return <h3>Uploading your asset...</h3>
+    return (
+      <Loading message="Minting your NFT ..."/>
+    )
   }
 
   if (successStatus) {

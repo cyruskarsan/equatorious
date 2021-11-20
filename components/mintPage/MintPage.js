@@ -5,12 +5,20 @@ import { isPolygonNetwork } from '@src/helpers';
 import mintNft from '@src/contractCalls/mintNft';
 // import MintNftRequest from "@src/contractCalls/MintNftRequest"
 import FileUploadModal from './FileUploadModal';
+import SuccessModal from '../SuccessModal/SuccessModal';
+import Loading from './Loading';
 
 const MintPage = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [, setSuccess] = useState();
-  const [error, setError] = useState('');
+  const [successStatus, setSuccessStatus] = useState();
+  const [polygonUrl, setPolygonUrl] = useState();
   const { account, chainId } = useEthers();
+
+  // const handleCallback = ( childData ) =>
+  // {
+  //   setSuccess( false );
+  //   isLoading( false );
+  // };
 
   const mint = (file, name, desc) => {
     if (isPolygonNetwork(chainId)) {
@@ -19,11 +27,12 @@ const MintPage = () => {
         .then((response) => {
           // todo: successMessage
           setIsLoading(false);
-          setSuccess(response.json());
+          return response.json();
         })
+        .then((json) => setPolygonUrl(json.transaction_external_url))
+        .then(() => setSuccessStatus(true))
         .catch((err) => {
-          setIsLoading(false);
-          setError(err);
+          alert('Something went wrong! Try refreshing the page', err);
           console.error(err);
           console.log(process.env.NEXT_PUBLIC_NFTPORT_KEY);
         });
@@ -34,13 +43,20 @@ const MintPage = () => {
     }
   };
 
-  return isLoading ? (
-    <h3>Uploading your asset...</h3>
-  ) : error ? (
-    ((<h3>There was an error minting your nft.</h3>), (<p>{error}</p>))
-  ) : (
-    <FileUploadModal onSubmit={mint} />
-  );
+  if (isLoading) {
+    return <Loading message="Minting your NFT ..." />;
+  }
+
+  if (successStatus) {
+    return (
+      <SuccessModal
+        isOpen={successStatus}
+        polygonUrl={polygonUrl}
+        setIsOpen={setSuccessStatus}
+      />
+    );
+  }
+  return <FileUploadModal onSubmit={mint} />;
 };
 
 export default MintPage;

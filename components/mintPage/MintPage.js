@@ -9,7 +9,7 @@ import FileUploadModal from "./FileUploadModal"
 const MintPage = () =>
 {
   const [ isLoading, setIsLoading ] = useState( false )
-  // const [ success, setSuccess ] = useState();
+  const [ success, setSuccess ] = useState();
   const { account, chainId } = useEthers()
 
   const mint = ( file, name, desc ) =>

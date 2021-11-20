@@ -12,7 +12,6 @@ const SuccessModal = ({isOpen, setIsOpen, polygonUrl}) => {
   }
 
     return (
-      <div>
         <div className="modal h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50" hidden={!isOpen}>
           {/* modal */}
           <div className="bg-white rounded shadow-lg w-10/12 md:w-1/3">
@@ -31,7 +30,6 @@ const SuccessModal = ({isOpen, setIsOpen, polygonUrl}) => {
             </div>
           </div>
         </div>
-      </div>
     )
 };
 

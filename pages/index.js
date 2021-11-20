@@ -1,20 +1,11 @@
-import { css } from '@emotion/css';
-import { MainApp, NftCardGrid } from '@src/components';
-import { useNftsOwned } from '@src/hooks/api';
-
-export const titleClass = css`
-  color: var(--text-secondary);
-  text-decoration: none;
-`;
+import { MainApp, Dashboard } from '@src/components';
+import * as styles from '@src/components/mainApp/index.style';
 
 export default function Home() {
-  const { data } = useNftsOwned(process.env.NEXT_PUBLIC_NFTPORT_ADDRESS);
-
   return (
     <MainApp>
-      <h1 className={titleClass}>NFT Marketplace</h1>
-      <p>put a button to enter app here</p>
-      <NftCardGrid items={data} />
+      <h1 className={styles.title}>Your Offchain Assets Dashboard</h1>
+      <Dashboard />
     </MainApp>
   );
 }

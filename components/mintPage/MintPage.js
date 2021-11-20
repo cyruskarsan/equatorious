@@ -1,25 +1,40 @@
-import mintNft from '@src/contractCalls/mintNft';
-import FileUploadModal from './FileUploadModal';
-// import MintNftRequest from "@src/contractCalls/MintNftRequest"
 import * as React from 'react';
-// import * as ReactDOM from "react-dom"
+import { useState } from 'react';
+import { useEthers } from '@usedapp/core';
+import { isPolygonNetwork } from '@src/helpers';
+import mintNft from '@src/contractCalls/mintNft';
+// import MintNftRequest from "@src/contractCalls/MintNftRequest"
+import FileUploadModal from './FileUploadModal';
 
 const MintPage = () => {
-  const mint = (event) => {
-    // TODO: fix this to actually use the uploaded file, name, and wallet addr
-    event.preventDefault();
-    // const requestBody: MintNftRequest = {
-    console.log('mint button clicked.');
-    console.log(event.target);
-    const requestBody = {
-      name: event.target.name.value,
-      file_url: event.target.file.value,
-      mint_to_address: event.target.addr.value,
-    };
-    return mintNft(requestBody);
+  const [isLoading, setIsLoading] = useState(false);
+  const [, setSuccess] = useState();
+  const { account, chainId } = useEthers();
+
+  const mint = (file, name, desc) => {
+    if (isPolygonNetwork(chainId)) {
+      setIsLoading(true);
+      mintNft(file, name, desc, account)
+        .then((response) => {
+          // todo: successMessage
+          setIsLoading(false);
+          setSuccess(response.json());
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
+      // TODO: might wanna prevent the user from entering info
+      // into form if the page will refresh upon switching network....
+      alert('Must be connected to polygon network! Please try again.');
+    }
   };
 
-  return <FileUploadModal onSubmit={mint} />;
+  return isLoading ? (
+    <h3>Uploading your asset...</h3>
+  ) : (
+    <FileUploadModal onSubmit={mint} />
+  );
 };
 
 export default MintPage;

@@ -7,15 +7,8 @@
   "settings": {
     "import/resolver": {
       "alias": {
-        "map": [
-          [
-            "@src",
-            "./"
-          ]
-        ],
-        "extension": [
-          ".js"
-        ]
+        "map": [["@src", "./"]],
+        "extension": [".js"]
       }
     }
   },
@@ -53,10 +46,7 @@
     "react/prop-types": [
       "error",
       {
-        "ignore": [
-          "Component",
-          "pageProps"
-        ]
+        "ignore": ["Component", "pageProps"]
       }
     ],
     "react/require-default-props": "error"

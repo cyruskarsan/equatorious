@@ -1,21 +1,23 @@
 // import MintNftRequest from "./MintNftRequest"
 
-const mintNft = (fileData, nftName, nftDesc, account) =>
+import { NFTPORT_API_KEY } from "@src/helpers"
+
+const mintNft = ( fileData, nftName, nftDesc, account ) =>
 {
   const options = {
     method: 'POST',
     body: fileData,
     headers: {
-      "Authorization": "91e45e10-9125-46f3-b7f8-dfd8b547837f"
+      "Authorization": NFTPORT_API_KEY
     }
   }
-  
-  return fetch("https://api.nftport.xyz/v0/mints/easy/files?" + new URLSearchParams({
+
+  return fetch( "https://api.nftport.xyz/v0/mints/easy/files?" + new URLSearchParams( {
     chain: "polygon",
     name: nftName,
     description: nftDesc,
     mint_to_address: account,
-  } ), options)
-};
+  } ), options )
+}
 
-export default mintNft;
+export default mintNft

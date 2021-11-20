@@ -47,7 +47,7 @@ const SuccessModal = ({ isOpen, setIsOpen, polygonUrl }) => {
             onClick={handleCloseModal}
             type="button"
           >
-            Mint More!
+            Mint Another!
           </button>
           <button
             className="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white"
@@ -65,7 +65,7 @@ const SuccessModal = ({ isOpen, setIsOpen, polygonUrl }) => {
 SuccessModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   setIsOpen: PropTypes.func.isRequired,
-  polygonUrl: PropTypes.str.isRequired,
+  polygonUrl: PropTypes.string.isRequired,
 };
 
 export default SuccessModal;

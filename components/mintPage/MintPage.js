@@ -8,9 +8,7 @@ const MintPage = () =>
 {
   const mint = ( event ) =>
   {
-    // TODO: fix this to actually use the uploaded file, name, and wallet addr
     event.preventDefault();
-    // const requestBody: MintNftRequest = {
     console.log( 'mint button clicked.' );
     console.log( event.target );
     const requestBody = {

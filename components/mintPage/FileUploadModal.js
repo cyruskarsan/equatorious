@@ -78,7 +78,7 @@ export default function FileUploadModal({ onSubmit }) {
         {isFilePicked && (
           <div className="grid grid-cols-1 space-y-2">
             <div className="flex items-center justify-center w-full">
-              <p> selectedFile: {selectedFile.name}</p>
+              <p> Selected File: {selectedFile.name}</p>
             </div>
           </div>
         )}

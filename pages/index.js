@@ -9,7 +9,9 @@ export const titleClass = css`
 export default function Home() {
   return (
     <MainApp>
-      <h1 className={titleClass}>Your Offchain Assets Dashboard</h1>
+      <h1 className={'self-center ' + titleClass}>
+        Your Offchain Assets Dashboard
+      </h1>
       <Dashboard />
     </MainApp>
   );

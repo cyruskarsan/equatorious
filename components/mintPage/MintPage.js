@@ -4,10 +4,11 @@ import { useEthers } from '@usedapp/core';
 import mintNft from "@src/contractCalls/mintNft";
 // import MintNftRequest from "@src/contractCalls/MintNftRequest"
 import FileUploadModal from "./FileUploadModal";
+import Modal from "../modal";
 
 const MintPage = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [success, setSuccess] = useState()
+  const [success, setSuccess] = useState(false)
   const { account } = useEthers();
 
   const mint = (file, name, desc) => {
@@ -25,9 +26,13 @@ const MintPage = () => {
       });
   };
 
-  return isLoading ?
-    <h3>Uploading your asset...</h3> :
-    <FileUploadModal onSubmit={mint} />
+  return ( 
+  <>
+  {isLoading && <h3>Uploading your asset...</h3>} 
+  {!isLoading && <FileUploadModal onSubmit={mint} />}
+    {success && <Modal/>}
+    </>
+  )
 };
 
 export default MintPage;

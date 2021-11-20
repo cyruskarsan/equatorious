@@ -34,7 +34,7 @@ const MintPage = () => {
           setPolygonUrl(json.transaction_external_url);
         })
         .catch((err) => {
-          alert('Something went wrong!', err);
+          alert('Something went wrong! Try refreshing the page', err);
           console.error(err);
         });
     } else {

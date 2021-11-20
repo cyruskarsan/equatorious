@@ -1,27 +1,33 @@
-import mintNft from "@src/contractCalls/mintNft";
-import FileUploadModal from "./FileUploadModal";
-// import MintNftRequest from "@src/contractCalls/MintNftRequest"
 import * as React from "react";
-// import * as ReactDOM from "react-dom"
+import { useState } from "react";
+import { useEthers } from '@usedapp/core';
+import mintNft from "@src/contractCalls/mintNft";
+// import MintNftRequest from "@src/contractCalls/MintNftRequest"
+import FileUploadModal from "./FileUploadModal";
 
-const MintPage = () =>
-{
-  const mint = ( event ) =>
-  {
+const MintPage = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [success, setSuccess] = useState()
+  const { account } = useEthers();
+
+  const mint = (file, name, desc) => {
     event.preventDefault();
-    console.log( 'mint button clicked.' );
-    console.log( event.target );
-    const requestBody = {
-      name: event.target.name.value,
-      file_url: event.target.file.value,
-      mint_to_address: event.target.addr.value
-    };
-    return mintNft( requestBody );
+
+    setIsLoading(true);
+    mintNft(file, name, desc, account)
+      .then((response) => {
+        // todo: successMessage
+        setIsLoading(false);
+        setSuccess(response.json())
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
-  return (
-    <FileUploadModal onSubmit={ mint } />
-  );
+  return isLoading ?
+    <h3>Uploading your asset...</h3> :
+    <FileUploadModal onSubmit={mint} />
 };
 
 export default MintPage;

@@ -1,3 +1,4 @@
+import { NFTPORT_CONTRACT_ADDR } from '@src/helpers';
 import { useEffect, useRef, useState } from 'react';
 import { mapIpfsToHttps, mapNftToCardProps } from './mappers';
 
@@ -20,20 +21,22 @@ const useDecodeNfts = (nfts) => {
 
       try {
         await Promise.all(
-          nfts.map(async (nft, idx) => {
-            const { id, ipfs } = mapNftToCardProps(nft);
-            if (ipfs) {
-              const url = mapIpfsToHttps(ipfs);
-              const res = await fetch(url);
-              const json = await res.json();
-              setData((prevData) => [
-                ...prevData,
-                { ...nfts[idx], ...json, id },
-              ]);
-            }
-            //   setData((prevData) => [...prevData, nfts[idx]]);
-            // }
-          }),
+          nfts
+            .filter((nft) => nft.contract_address == NFTPORT_CONTRACT_ADDR)
+            .map(async (nft, idx) => {
+              const { id, ipfs } = mapNftToCardProps(nft);
+              if (ipfs) {
+                const url = mapIpfsToHttps(ipfs);
+                const res = await fetch(url);
+                const json = await res.json();
+                setData((prevData) => [
+                  ...prevData,
+                  { ...nfts[idx], ...json, id },
+                ]);
+              }
+              //   setData((prevData) => [...prevData, nfts[idx]]);
+              // }
+            }),
         );
       } catch (err) {
         setError(err);

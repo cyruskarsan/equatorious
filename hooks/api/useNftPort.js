@@ -12,7 +12,7 @@ export const useNftsOwned = (address) => {
     ? `https://api.nftport.xyz/v0/accounts/${address}?chain=polygon`
     : '';
   const [{ data, error, loading }, executeFetch] = useFetch(url, {
-    run: false,
+    run: address,
   });
   const {
     data: nftData,

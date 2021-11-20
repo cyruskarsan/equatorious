@@ -8,9 +8,12 @@ export const useNftsFromContract = (address) =>
   useFetch(`https://api.nftport.xyz/v0/nfts/${address}?chain=polygon`);
 
 export const useNftsOwned = (address) => {
-  const [{ data, error, loading }, executeFetch] = useFetch(
-    `https://api.nftport.xyz/v0/accounts/${address}?chain=polygon`,
-  );
+  const url = address
+    ? `https://api.nftport.xyz/v0/accounts/${address}?chain=polygon`
+    : '';
+  const [{ data, error, loading }, executeFetch] = useFetch(url, {
+    run: false,
+  });
   const {
     data: nftData,
     error: nftError,

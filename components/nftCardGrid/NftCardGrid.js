@@ -10,7 +10,7 @@ const NftCardGrid = () => {
   const { data, executeFetch } = useNftsOwned(account);
 
   const refresh = () => {
-    if (account && !data) {
+    if (account && data.length == 0) {
       executeFetch();
     }
   };

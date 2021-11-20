@@ -12,7 +12,7 @@ const Dashboard = () =>
   {
     if ( addr )
     {
-      const url = `https://api.nftport.xyz/v0/accounts/${addr}?chain=polygon&account_address=addr&continuation=5&include=metadata`
+      const url = `https://api.nftport.xyz/v0/accounts/${addr}?chain=polygon&account_address=addr&continuation=&include=metadata`
       return new Promise( ( resolve, reject ) =>
       {
         fetch( url, {
@@ -33,9 +33,16 @@ const Dashboard = () =>
     }
   }
 
+  const formatAssetResponse = ( { nfts } ) =>
+  {
+    console.log( nfts )
+    return []
+  }
+
   useEffect( () =>
   {
     fetchAssets( account )
+      .then( formatAssetResponse )
       .then( setAssets )
       .catch( ( err ) => { console.error( err ) } )
   }, [ account ] )

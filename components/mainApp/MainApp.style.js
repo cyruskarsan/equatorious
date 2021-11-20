@@ -13,8 +13,3 @@ export const main = css`
   flex-direction: column;
   align-items: flex-start;
 `;
-
-export const title = css`
-  color: var(--text-secondary);
-  text-decoration: none;
-`;

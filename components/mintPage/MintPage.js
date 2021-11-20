@@ -29,10 +29,8 @@ const MintPage = () => {
           setIsLoading(false);
           return response.json();
         })
-        .then((json) => {
-          setSuccessStatus(true);
-          setPolygonUrl(json.transaction_external_url);
-        })
+        .then((json) => setPolygonUrl(json.transaction_external_url))
+        .then(() => setSuccessStatus(true))
         .catch((err) => {
           alert('Something went wrong! Try refreshing the page', err);
           console.error(err);

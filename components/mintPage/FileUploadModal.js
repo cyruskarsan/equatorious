@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import { useState } from 'react';
-import './FileUploadModal.module.css';
+import Image from 'next/image'
+import { useState } from 'react'
+import './FileUploadModal.module.css'
 
 /**
  * from https://tailwindcomponents.com/component/tailwind-css-file-upload
@@ -9,35 +9,35 @@ import './FileUploadModal.module.css';
  */
 export default function FileUploadModal ( { onSubmit } )
 {
-  const [ selectedFile, setSelectedFile ] = useState();
-  const [ isFilePicked, setIsFilePicked ] = useState( false );
-  const [ nftName, setNftName ] = useState( "No name" );
-  const [ nftDesc, setNftDesc ] = useState( "No desc" );
+  const [ selectedFile, setSelectedFile ] = useState()
+  const [ isFilePicked, setIsFilePicked ] = useState( false )
+  const [ nftName, setNftName ] = useState( "No name" )
+  const [ nftDesc, setNftDesc ] = useState( "No desc" )
 
   const changeHandler = ( event ) =>
   {
-    setSelectedFile( event.target.files[ 0 ] );
-    setIsFilePicked( true );
-  };
+    setSelectedFile( event.target.files[ 0 ] )
+    setIsFilePicked( true )
+  }
 
   const formHandler = ( event ) =>
   {
-    event.preventDefault();
-    const fileData = new FormData();
-    fileData.append( 'file', selectedFile );
+    event.preventDefault()
+    const fileData = new FormData()
+    fileData.append( 'file', selectedFile )
 
-    onSubmit( fileData, nftName, nftDesc );
-  };
+    onSubmit( fileData, nftName, nftDesc )
+  }
 
   const recordName = ( event ) =>
   {
-    setNftName( event.target.value );
-  };
+    setNftName( event.target.value )
+  }
 
   const recordDesc = ( event ) =>
   {
-    setNftDesc( event.target.value );
-  };
+    setNftDesc( event.target.value )
+  }
 
 
   return (
@@ -91,13 +91,13 @@ export default function FileUploadModal ( { onSubmit } )
         </div>
       </form>
     </div>
-  );
+  )
 }
 
 FileUploadModal.defaultProps = {
-  onSubmit: () => { console.warn( "onSubmit called but not defined for FileUploadModal" ); }
-};
+  onSubmit: () => { console.warn( "onSubmit called but not defined for FileUploadModal" ) }
+}
 
 FileUploadModal.propTypes = {
   onSubmit: () => { }
-};
+}

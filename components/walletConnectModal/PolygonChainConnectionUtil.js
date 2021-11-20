@@ -11,7 +11,7 @@ export const switchToPolygonChain = async () =>
       await window.ethereum.request( {
         method: 'wallet_switchEthereumChain',
         params: [ { chainId: '0x61' } ], // chainId must be in hexadecimal numbers
-      } );
+      } )
     } catch ( error )
     {
       // This error code indicates that the chain has not been added to MetaMask
@@ -34,17 +34,17 @@ export const switchToPolygonChain = async () =>
                 },
               },
             ],
-          } );
+          } )
         } catch ( addError )
         {
-          console.error( addError );
+          console.error( addError )
         }
       }
-      console.error( error );
+      console.error( error )
     }
   } else
   {
     // if no window.ethereum then MetaMask is not installed
-    alert( 'MetaMask is not installed. Please consider installing it: https://metamask.io/download.html' );
+    alert( 'MetaMask is not installed. Please consider installing it: https://metamask.io/download.html' )
   }
-};
+}

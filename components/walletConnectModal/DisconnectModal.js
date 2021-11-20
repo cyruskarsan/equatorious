@@ -1,15 +1,15 @@
-import { PropTypes } from "prop-types";
-import { useEthers } from "@usedapp/core";
+import { PropTypes } from "prop-types"
+import { useEthers } from "@usedapp/core"
 
 const DisconnectModal = ( { isOpen, setIsOpen } ) =>
 {
-  const closeModal = () => setIsOpen( false );
-  const { deactivate } = useEthers();
+  const closeModal = () => setIsOpen( false )
+  const { deactivate } = useEthers()
   const disconnect = () =>
   {
-    deactivate();
-    closeModal();
-  };
+    deactivate()
+    closeModal()
+  }
 
   if ( isOpen )
   {
@@ -50,17 +50,17 @@ const DisconnectModal = ( { isOpen, setIsOpen } ) =>
           </div>
         </div>
       </div>
-    );
+    )
   }
   else 
   {
-    return <></>;
+    return <></>
   }
-};
+}
 
 DisconnectModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   setIsOpen: PropTypes.func.isRequired
-};
+}
 
-export default DisconnectModal;
+export default DisconnectModal

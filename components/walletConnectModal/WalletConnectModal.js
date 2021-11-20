@@ -1,44 +1,44 @@
-import { bool, node } from 'prop-types';
-import { useEffect, useState } from 'react';
-import { Button, Dialog } from '@src/components';
-import { useEthers, getChainName, shortenAddress, useLookupAddress } from '@usedapp/core';
-import DisconnectModal from './DisconnectModal';
-import * as styles from './WalletConnectModal.styles';
+import { bool, node } from 'prop-types'
+import { useEffect, useState } from 'react'
+import { Button, Dialog } from '@src/components'
+import { useEthers, getChainName, shortenAddress, useLookupAddress } from '@usedapp/core'
+import DisconnectModal from './DisconnectModal'
+import * as styles from './WalletConnectModal.styles'
 
 const WalletConnectModal = () =>
 {
-  const [ open, setOpen ] = useState( false );
-  const [ disconnectModalStatus, setDisconnectModalStatus ] = useState( false );
-  const openDisconnectModal = () => setDisconnectModalStatus( true );
+  const [ open, setOpen ] = useState( false )
+  const [ disconnectModalStatus, setDisconnectModalStatus ] = useState( false )
+  const openDisconnectModal = () => setDisconnectModalStatus( true )
 
   // TODO: error handling if auth fails
-  const { activateBrowserWallet, account, chainId, error } = useEthers();
-  const ens = useLookupAddress();
+  const { activateBrowserWallet, account, chainId, error } = useEthers()
+  const ens = useLookupAddress()
 
-  const [ chain, setChain ] = useState( 'None' );
+  const [ chain, setChain ] = useState( 'None' )
 
-  const openModal = () => setOpen( true );
-  const closeModal = () => setOpen( false );
+  const openModal = () => setOpen( true )
+  const closeModal = () => setOpen( false )
 
   useEffect( () =>
   {
-    setChain( getChainName( chainId ) );
-  }, [ chainId ] );
+    setChain( getChainName( chainId ) )
+  }, [ chainId ] )
 
   useEffect( () =>
   {
     if ( error )
     {
-      console.log( "error occurred from useEthers:" );
-      console.error( error );
+      console.log( "error occurred from useEthers:" )
+      console.error( error )
     }
-  }, [ error ] );
+  }, [ error ] )
 
   const connectMetaMask = () =>
   {
-    activateBrowserWallet();
-    closeModal();
-  };
+    activateBrowserWallet()
+    closeModal()
+  }
 
   // const connectWalletConnect = () => { }; // TODO
   // const connectCoinbaseWallet = () => { }; // TODO
@@ -48,7 +48,7 @@ const WalletConnectModal = () =>
   const connectButton = account ?
     <Button onClick={ openDisconnectModal }
       text={ ` Account: ${ens ?? shortenAddress( account )} on ${chain}` } /> :
-    <Button onClick={ openModal } text="Connect Wallet" />;
+    <Button onClick={ openModal } text="Connect Wallet" />
 
   return (
     <>
@@ -66,17 +66,17 @@ const WalletConnectModal = () =>
         </div>
       </Dialog>
     </>
-  );
-};
+  )
+}
 
 WalletConnectModal.defaultProps = {
   children: null,
   visible: false,
-};
+}
 
 WalletConnectModal.propTypes = {
   children: node,
   visible: bool,
-};
+}
 
-export default WalletConnectModal;
+export default WalletConnectModal

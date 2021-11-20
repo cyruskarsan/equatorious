@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useState } from "react"
 import { useEthers } from '@usedapp/core'
-import isPolygonNetwork from '@src/helpers'
+import { isPolygonNetwork } from '@src/helpers'
 import mintNft from "@src/contractCalls/mintNft"
 // import MintNftRequest from "@src/contractCalls/MintNftRequest"
 import FileUploadModal from "./FileUploadModal"
@@ -9,7 +9,7 @@ import FileUploadModal from "./FileUploadModal"
 const MintPage = () =>
 {
   const [ isLoading, setIsLoading ] = useState( false )
-  // const [ success, setSuccess ] = useState();
+  const [ success, setSuccess ] = useState();
   const { account, chainId } = useEthers()
 
   const mint = ( file, name, desc ) =>

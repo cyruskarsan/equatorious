@@ -41,7 +41,7 @@ export default function FileUploadModal ( { onSubmit } )
 
 
   return (
-    <div className="sm:max-w-lg w-full p-10 bg-white rounded-xl z-10">
+    <div className="sm:max-w-lg w-full p-10 bg-white rounded-xl z-10 self-center">
       <div className="text-center">
         <h2 className="mt-5 text-3xl font-bold text-gray-900">
           Create your NFT!

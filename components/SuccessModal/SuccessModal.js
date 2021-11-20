@@ -26,7 +26,7 @@ const SuccessModal = ({isOpen, setIsOpen, polygonUrl}) => {
               <a href={polygonUrl} target="_blank" className="text-blue-600 hover:underline"> Check it out on PolygonScan!</a>  
             </div>
             <div className="flex justify-between items-center w-100 border-t p-3">
-              <button className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-white mr-1 close-modal" onClick={handleCloseModal}>Close</button>
+              <button className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-white mr-1 close-modal" onClick={handleCloseModal}>Mint More!</button>
               <button className="bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded text-white" onClick={handleDashboardButton}>Dashboard</button>
             </div>
           </div>

@@ -16,7 +16,7 @@ export const nav = css`
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
-    box-shadow: 0 0 0 2px;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
   }
 `;
 

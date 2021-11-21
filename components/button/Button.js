@@ -19,14 +19,17 @@ const Button = ({
     {...props}
   >
     {icon && (
-      <i className={styles.buttonIcon} data-icon-left>
+      <i
+        className={cx(styles.buttonIcon, styles.buttonLeftIcon)}
+        data-icon-left
+      >
         <Image alt="Metamask" height={24} src={icon} width={24} />
       </i>
     )}
     <span data-text>{text}</span>
     {children}
     {rightIcon && (
-      <i className={styles.buttonRightIcon} data-icon-right>
+      <i className={styles.buttonIcon} data-icon-right>
         <Image alt="Metamask" height={24} src={rightIcon} width={24} />
       </i>
     )}

@@ -3,10 +3,8 @@ import { NftCardGrid } from '@src/components';
 import { useChainName } from '@src/hooks/api';
 
 const Dashboard = () => {
-  const { account, chainId, ...props } = useEthers();
+  const { account, chainId } = useEthers();
   const chain = useChainName(chainId);
-
-  console.log({ account, chainId, props });
 
   return (
     <>

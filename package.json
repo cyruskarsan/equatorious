@@ -3,8 +3,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run build:css && next build",
-    "start": "npm run watch:css && next start",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write \"**/*.{js,json,css,md}\" --ignore-path \"./.gitignore\"",
     "test": "react-scripts test",

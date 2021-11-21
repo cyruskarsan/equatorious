@@ -9,6 +9,9 @@ export const link = css`
   padding: 8px 12px;
   width: fit-content;
   white-space: nowrap;
+  &:hover {
+    box-shadow: 0 0 0 1px var(--hover-outline);
+  }
 `;
 
 export const active = css`

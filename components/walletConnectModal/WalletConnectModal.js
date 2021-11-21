@@ -1,17 +1,13 @@
 import { useEffect, useState } from 'react';
 import { bool, node } from 'prop-types';
-import {
-  useEthers,
-  getChainName,
-  shortenAddress,
-  useLookupAddress,
-} from '@usedapp/core';
+import { useEthers, shortenAddress, useLookupAddress } from '@usedapp/core';
 import { cx } from '@emotion/css';
 import { Button, Dialog } from '@src/components';
 import { maticIcon, metamask, threeDots } from '@src/assets/icons';
 import DisconnectModal from './DisconnectModal';
 import * as styles from './WalletConnectModal.styles';
 import { getConnectButtonText } from './WalletConnectModal.helpers';
+import { useChainName } from '@src/hooks/api';
 
 const WalletConnectModal = () => {
   const [open, setOpen] = useState(false);
@@ -20,16 +16,11 @@ const WalletConnectModal = () => {
 
   // TODO: error handling if auth fails
   const { activateBrowserWallet, account, chainId, error } = useEthers();
+  const chain = useChainName(chainId);
   const ens = useLookupAddress();
-
-  const [chain, setChain] = useState('None');
 
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
-
-  useEffect(() => {
-    setChain(getChainName(chainId));
-  }, [chainId]);
 
   useEffect(() => {
     if (error) {
@@ -48,6 +39,7 @@ const WalletConnectModal = () => {
   const buttonText = getConnectButtonText(account, chain, addressText);
   const connectButtonStyles = cx(styles.connectButton, {
     [styles.wrongNetwork]: account && chain !== 'Polygon',
+    [styles.connectButtonMask]: !account || chain !== 'Polygon',
   });
 
   // const connectWalletConnect = () => { }; // TODO

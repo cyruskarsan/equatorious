@@ -44,6 +44,22 @@ export const connectButton = css`
   }
 `;
 
+export const connectButtonMask = css`
+  & [data-icon-left] {
+    position: relative;
+  }
+  & [data-icon-mask] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--icon-mask);
+    border-radius: 10px;
+    z-index: 10;
+  }
+`;
+
 export const wrongNetwork = css`
   background-color: rgba(255, 0, 0, 0.1);
 `;

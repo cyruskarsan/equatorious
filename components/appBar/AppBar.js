@@ -5,7 +5,6 @@ import * as styles from './AppBar.styles';
 const AppBar = () => {
   return (
     <header className={styles.appBarRoot}>
-      <span />
       <Nav label="main navigation" links={mainNavLinks} />
       <MenuBar />
     </header>

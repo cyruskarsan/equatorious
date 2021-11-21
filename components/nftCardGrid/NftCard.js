@@ -1,29 +1,35 @@
 import { string } from 'prop-types';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useImageVerifier } from '@src/hooks/api';
-import { mockItems } from './NftCardGrid.helper';
+import { noImage } from '@src/assets/icons';
+import * as styles from './NftCard.styles';
 
 const NftCard = ({ description, image, name }) => {
   const isImage = useImageVerifier(image);
-  const mockImage = mockItems[Math.floor(Math.random() * mockItems.length)].src;
 
   return (
-    <div
-      className="container mx-auto shadow-lg rounded-lg max-w-md hover:shadow-2xl transition duration-300"
-      style={{ maxWidth: 250 }}
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        alt={name}
-        className="rounded-t-lg w-full"
-        src={isImage ? image : mockImage}
-      />
-      <div className="p-6">
-        <h1 className="md:text-1xl text-xl hover:text-indigo-600 transition duration-200  font-bold text-gray-900 ">
-          {name}
-        </h1>
-        <p className="text-gray-700 my-2 hover-text-900 ">{description}</p>
-      </div>
-    </div>
+    <Link href={image}>
+      <a
+        className={`container mx-auto shadow-lg rounded-lg max-w-md hover:shadow-2xl transition duration-300 ${styles.cardLink}`}
+        target="_blank"
+      >
+        <Image
+          alt={name}
+          className={`rounded-t-lg w-full ${styles.cardImage}`}
+          height="250px"
+          objectFit="cover"
+          src={isImage ? image : noImage.src}
+          width="250px"
+        />
+        <div className="p-6">
+          <h1 className="md:text-1xl text-xl hover:text-indigo-600 transition duration-200  font-bold text-gray-900 ">
+            {name}
+          </h1>
+          <p className="text-gray-700 my-2 hover-text-900 ">{description}</p>
+        </div>
+      </a>
+    </Link>
   );
 };
 

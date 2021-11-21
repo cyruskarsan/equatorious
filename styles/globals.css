@@ -10,6 +10,7 @@
 [data-theme='light'] {
   --main-bg: white;
   --main-nav-bg: white;
+  --main-nav-border: rgba(0, 0, 0, 0.6);
   --header-bg: rgb(247, 248, 250);
   --navlink-bg-active: rgb(237, 238, 242);
   --navlink-text-active: black;
@@ -17,12 +18,13 @@
   --navlink-text-hover: black;
   --text-primary: black;
   --text-secondary: rgb(213, 0, 102);
-  --hover-outline: rgb(206, 208, 217);
+  --hover-outline: rgb(102, 102, 102);
 }
 
 [data-theme='dark'] {
   --main-bg: black;
   --main-nav-bg: rgb(25, 27, 31);
+  --main-nav-border: rgba(255, 255, 255, 0.6);
   --header-bg: rgb(33, 36, 41);
   --navlink-bg-active: rgb(44, 47, 54);
   --navlink-text-active: white;

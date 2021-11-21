@@ -6,7 +6,7 @@ import mintNft from '@src/contractCalls/mintNft';
 // import MintNftRequest from "@src/contractCalls/MintNftRequest"
 import FileUploadModal from './FileUploadModal';
 import SuccessModal from '../SuccessModal/SuccessModal';
-import Loading from './Loading';
+import { Loading } from '@src/components';
 
 const MintPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -30,8 +30,8 @@ const MintPage = () => {
           return response.json();
         })
         .then((json) => {
-          setPolygonUrl(json.transaction_external_url)
-          setSuccessStatus(true)
+          setPolygonUrl(json.transaction_external_url);
+          setSuccessStatus(true);
         })
         .catch((err) => {
           alert('Something went wrong! Try refreshing the page', err);

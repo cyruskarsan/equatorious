@@ -12,6 +12,7 @@ export const modalRoot = css`
 `;
 
 export const modalSection = css`
+  width: 100%;
   max-width: 420px;
   max-height: 420px;
   background-color: var(--main-bg);

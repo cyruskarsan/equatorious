@@ -17,7 +17,7 @@
   --navlink-text-hover: black;
   --text-primary: black;
   --text-secondary: rgb(213, 0, 102);
-  --hover-outline: rgb(206, 208, 217);
+  --hover-outline: rgb(102, 102, 102);
 }
 
 [data-theme='dark'] {

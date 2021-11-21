@@ -5,7 +5,7 @@ export const buttonRoot = css`
   border-radius: 8px;
   padding: 6px 8px;
   &:hover {
-    box-shadow: 0 0 0 1px black;
+    box-shadow: 0 0 0 1px var(--hover-outline);
   }
 `;
 

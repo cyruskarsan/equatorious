@@ -34,7 +34,6 @@ const MintPage = () => {
         .catch((err) => {
           alert('Something went wrong! Try refreshing the page', err);
           console.error(err);
-          console.log(process.env.NEXT_PUBLIC_NFTPORT_KEY);
         });
     } else {
       // TODO: might wanna prevent the user from entering info

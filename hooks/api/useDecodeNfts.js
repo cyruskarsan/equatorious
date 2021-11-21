@@ -34,8 +34,6 @@ const useDecodeNfts = (nfts) => {
                   { ...nfts[idx], ...json, id },
                 ]);
               }
-              //   setData((prevData) => [...prevData, nfts[idx]]);
-              // }
             }),
         );
       } catch (err) {

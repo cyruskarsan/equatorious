@@ -10,6 +10,14 @@ export const nav = css`
   border-radius: 16px;
   list-style: none;
   margin: 0;
+  @media (max-width: 450px) {
+    position: fixed;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    box-shadow: 0 0 0 2px;
+  }
 `;
 
 export const listItem = css`

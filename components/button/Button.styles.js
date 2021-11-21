@@ -10,7 +10,7 @@ export const buttonRoot = css`
 `;
 
 export const buttonIcon = css`
-  margin-right: 20px;
+  margin-right: 10px;
   max-width: 24px;
   max-height: 24px;
 `;

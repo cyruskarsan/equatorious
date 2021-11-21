@@ -1,7 +1,12 @@
 import { css } from '@emotion/css';
 
 export const container = css`
-  padding: 0 2rem;
+  @media (max-width: 640px) {
+    padding: 0 0.5rem;
+  }
+  @media (min-width: 640px) {
+    padding: 0 2rem;
+  }
 `;
 
 export const main = css`
@@ -12,4 +17,7 @@ export const main = css`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  @media (max-width: 640px) {
+    padding-bottom: 50px;
+  }
 `;

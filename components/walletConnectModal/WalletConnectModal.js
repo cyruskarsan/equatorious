@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
 import { bool, node } from 'prop-types';
-import { Button, Dialog } from '@src/components';
 import {
   useEthers,
   getChainName,
   shortenAddress,
   useLookupAddress,
 } from '@usedapp/core';
+import { cx } from '@emotion/css';
+import { Button, Dialog } from '@src/components';
+import { maticIcon, metamask, threeDots } from '@src/assets/icons';
 import DisconnectModal from './DisconnectModal';
-import metaMaskIcon from '@src/assets/metamask-icon.png';
 import * as styles from './WalletConnectModal.styles';
+import { getConnectButtonText } from './WalletConnectModal.helpers';
 
 const WalletConnectModal = () => {
   const [open, setOpen] = useState(false);
@@ -41,23 +43,27 @@ const WalletConnectModal = () => {
     closeModal();
   };
 
+  const handleButtonClick = account ? openDisconnectModal : openModal;
+  const addressText = account ? ens ?? shortenAddress(account) : '';
+  const buttonText = getConnectButtonText(account, chain, addressText);
+  const connectButtonStyles = cx(styles.connectButton, {
+    [styles.wrongNetwork]: account && chain !== 'Polygon',
+  });
+
   // const connectWalletConnect = () => { }; // TODO
   // const connectCoinbaseWallet = () => { }; // TODO
   // const connectFormatic = () => { }; // TODO
   // const connectPortis = () => { }; // TODO
 
-  const connectButton = account ? (
-    <Button
-      onClick={openDisconnectModal}
-      text={` Account: ${ens ?? shortenAddress(account)} on ${chain}`}
-    />
-  ) : (
-    <Button onClick={openModal} text="Connect Wallet" />
-  );
-
   return (
     <>
-      {connectButton}
+      <Button
+        className={connectButtonStyles}
+        icon={maticIcon.src}
+        onClick={handleButtonClick}
+        rightIcon={threeDots.src}
+        text={buttonText}
+      />
       <DisconnectModal
         isOpen={disconnectModalStatus}
         setIsOpen={setDisconnectModalStatus}
@@ -69,8 +75,8 @@ const WalletConnectModal = () => {
         </div>
         <div className={styles.connectGrid}>
           <Button
-            className={styles.connectButton}
-            icon={metaMaskIcon.src}
+            className={styles.metaMaskButton}
+            icon={metamask.src}
             onClick={connectMetaMask}
             text="MetaMask"
           />

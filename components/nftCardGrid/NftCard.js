@@ -2,7 +2,7 @@ import { string } from 'prop-types';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useImageVerifier } from '@src/hooks/api';
-import noImage from '@src/assets/no-image.png';
+import { noImage } from '@src/assets/icons';
 import * as styles from './NftCard.styles';
 
 const NftCard = ({ description, image, name }) => {

@@ -1,7 +1,7 @@
 import { WalletConnectModal } from '@src/components';
 import * as styles from './MenuBar.styles';
 
-const AppBar = () => {
+const MenuBar = () => {
   return (
     <div className={styles.menuBarRoot}>
       <WalletConnectModal />
@@ -9,4 +9,4 @@ const AppBar = () => {
   );
 };
 
-export default AppBar;
+export default MenuBar;

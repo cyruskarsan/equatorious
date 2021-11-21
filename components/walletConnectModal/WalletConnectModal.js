@@ -39,6 +39,7 @@ const WalletConnectModal = () => {
   const buttonText = getConnectButtonText(account, chain, addressText);
   const connectButtonStyles = cx(styles.connectButton, {
     [styles.wrongNetwork]: account && chain !== 'Polygon',
+    [styles.connectButtonMask]: !account || chain !== 'Polygon',
   });
 
   // const connectWalletConnect = () => { }; // TODO

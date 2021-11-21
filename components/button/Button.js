@@ -24,6 +24,7 @@ const Button = ({
         data-icon-left
       >
         <Image alt="Metamask" height={24} src={icon} width={24} />
+        <span data-icon-mask />
       </i>
     )}
     <span data-text>{text}</span>

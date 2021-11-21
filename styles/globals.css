@@ -19,6 +19,7 @@
   --text-primary: black;
   --text-secondary: rgb(213, 0, 102);
   --hover-outline: rgb(102, 102, 102);
+  --icon-mask: rgba(255, 255, 255, 0.6);
 }
 
 [data-theme='dark'] {
@@ -33,6 +34,7 @@
   --text-primary: white;
   --text-secondary: rgb(57, 130, 231);
   --hover-outline: rgb(64, 68, 79);
+  --icon-mask: rgba(0, 0, 0, 0.6);
 }
 
 html,

@@ -6,10 +6,10 @@ export const appBarRoot = css`
   width: 100%;
   padding: 16px;
   @media (min-width: 450px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 48px 1fr 1fr;
   }
   @media (max-width: 450px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 48px 1fr;
     justify-content: right;
   }
 `;

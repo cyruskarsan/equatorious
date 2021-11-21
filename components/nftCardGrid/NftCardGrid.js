@@ -1,10 +1,12 @@
 import { arrayOf, shape, string } from 'prop-types';
+import { useEthers } from '@usedapp/core';
 import { useNftsOwned } from '@src/hooks/api';
 import NftCard from './NftCard';
 import { mockItems } from './NftCardGrid.helper';
 
 const NftCardGrid = () => {
-  const { data } = useNftsOwned(process.env.NEXT_PUBLIC_NFTPORT_ADDRESS);
+  const { account } = useEthers();
+  const { data } = useNftsOwned(account);
 
   return (
     <div className="min-h-screen py-12 px-10 mx-auto">

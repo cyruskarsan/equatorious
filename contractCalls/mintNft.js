@@ -5,7 +5,7 @@ const mintNft = (fileData, nftName, nftDesc, account) => {
     method: 'POST',
     body: fileData,
     headers: {
-      Authorization: '91e45e10-9125-46f3-b7f8-dfd8b547837f',
+      Authorization: process.env.NFTPORT_KEY,
     },
   };
 

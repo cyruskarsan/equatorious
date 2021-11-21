@@ -3,6 +3,7 @@ export { default as BrowserPortal } from './browserPortal/BrowserPortal';
 export { default as Button } from './button/Button';
 export { default as Dashboard } from './mainApp/dashboard';
 export { default as Dialog } from './dialog/Dialog';
+export { default as Loading } from './loading/Loading';
 export { default as MainApp } from './mainApp/MainApp';
 export { default as MenuBar } from './menuBar/MenuBar';
 export { default as MintPage } from './mintPage/MintPage';

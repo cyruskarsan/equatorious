@@ -12,7 +12,8 @@ export const modalRoot = css`
 `;
 
 export const modalSection = css`
-  max-width: '420px';
+  max-width: 420px;
+  max-height: 420px;
   background-color: var(--main-bg);
   position: absolute;
   top: 10%;

@@ -1,7 +1,6 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
+import { oneOf, string } from 'prop-types';
 
-const Loading = ({ message }) => {
+const Loading = ({ message, size }) => {
   return (
     <div className="flex items-center justify-center w-full h-full">
       <div className="flex justify-center items-center space-x-1 text-sm text-gray-700">
@@ -18,14 +17,19 @@ const Loading = ({ message }) => {
             fillRule="evenodd"
           />
         </svg>
-        <div className="text-3xl font-medium text-black">{message}</div>
+        <div className={`text-${size} font-medium text-black`}>{message}</div>
       </div>
     </div>
   );
 };
 
+Loading.defaultProps = {
+  size: '3xl',
+};
+
 Loading.propTypes = {
-  message: PropTypes.string.isRequired,
+  message: string.isRequired,
+  size: oneOf(['xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl']),
 };
 
 export default Loading;

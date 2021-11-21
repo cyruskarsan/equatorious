@@ -1,5 +1,5 @@
-import { bool, node } from 'prop-types';
 import { useEffect, useState } from 'react';
+import { bool, node } from 'prop-types';
 import { Button, Dialog } from '@src/components';
 import {
   useEthers,
@@ -8,6 +8,7 @@ import {
   useLookupAddress,
 } from '@usedapp/core';
 import DisconnectModal from './DisconnectModal';
+import metaMaskIcon from '@src/assets/metamask-icon.png';
 import * as styles from './WalletConnectModal.styles';
 
 const WalletConnectModal = () => {
@@ -64,12 +65,15 @@ const WalletConnectModal = () => {
       <Dialog label="Connect a Wallet" onClose={closeModal} open={open}>
         <div className={styles.connectHeading}>
           <h2>Connect a Wallet</h2>
-
-          {/* TODO: make this button father away */}
           <Button onClick={closeModal} text="Close" />
         </div>
         <div className={styles.connectGrid}>
-          <Button onClick={connectMetaMask} text="MetaMask" />
+          <Button
+            className={styles.connectButton}
+            icon={metaMaskIcon.src}
+            onClick={connectMetaMask}
+            text="MetaMask"
+          />
         </div>
       </Dialog>
     </>
